@@ -52,27 +52,11 @@
             <h3>7 items on the list</h3>
             <button class="btn btn-primary">Add item</button>
           </header>
-          <div class="p-3">
-              <p class="lead mb-0">Dumping night</p>
-            </div>
-          <div class="p-3">
-            <p class="lead mb-0">Biscuits / brunch</p>
-          </div>
-          <div class="p-3">
-            <p class="lead mb-0">Clam chowder and corn bread</p>
-          </div>
-          <div class="p-3">
-            <p class="lead mb-0">Homemade pasta</p>
-          </div>
-          <div class="p-3">
-            <p class="lead mb-0">Afternoon tea</p>
-          </div>
-          <div class="p-3">
-            <p class="lead mb-0">Chinese Roast Pork on Garlic Bread</p>
-          </div>
-          <div class="p-3">
-            <p class="lead mb-0">Poppersss</p>
-          </div>
+            {% for item in the_list %}
+                <div class="p-3">
+                    <p class="lead mb-0">{{ item.name }}</p>
+                  </div>
+            {% endfor %}
         </div>
       </div>
     </div>

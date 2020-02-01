@@ -25,7 +25,11 @@ SECRET_KEY = '$6up%(md1+it2mc-^07c2(sva#w52ew7^nehed4-d%%4tq6tx2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.189']
+ALLOWED_HOSTS = [
+    '192.168.1.189',
+    '127.0.0.1',
+    'kookingwithkevin.kevinjcochran.com',
+]
 
 
 # Application definition
@@ -78,7 +82,7 @@ WSGI_APPLICATION = 'kooking_with_kevin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'kwk.sqlite3'),
     }
 }
 
