@@ -1,14 +1,16 @@
 FROM python:3
 
 ENV PYTHONUNBUFFERED 1
-WORKDIR /usr/app
+WORKDIR /opt/kwk
 
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY manage.py ./
-COPY templates ./
-COPY kooking_with_kevin ./
-COPY the_list ./
+COPY manage.py .
+COPY kooking_with_kevin ./kooking_with_kevin
+COPY templates ./templates
+COPY the_list ./the_list
 
-CMD ["python", "/usr/app/manage.py", "runserver", "8001"]
+RUN python manage.py migrate
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
