@@ -1,0 +1,60 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{% static 'android-chrome-192x192.png' %}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{% static 'android-chrome-512x512.png' %}">
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "signin.css" %}">
+  <!-- title -->
+  <title>Sign in</title>
+</head>
+<body class="text-center">
+
+<form class="form-signin" method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <img class="mb-4" src="{% static "android-chrome-192x192.png" %}" alt="" width="72" height="72">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  {% if next %}
+      {% if user.is_authenticated %}
+      <div class="alert alert-danger">Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</div>
+      {% else %}
+      <div class="alert alert-info">Please login to see this page.</div>
+      {% endif %}
+  {% endif %}
+
+  {% if form.errors %}
+    <div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
+  {% endif %}
+
+  <label for="inputUsername" class="sr-only">Username</label>
+  <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <input type="hidden" name="next" value="{{ next }}">
+  <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+</form>
+</body>

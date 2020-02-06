@@ -6,10 +6,10 @@
     <div class="row justify-content-center align-content-center" style="height: 70vh">
         <div class="col-5">
             <div class="border rounded shadow bg-white p-3">
-                <form action="{% url 'the_list:save_item' %}" method="post">
+                <form action="{% url 'the_list:add_item' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="item_name">What do you want to cook?</label>
+                        <label for="item_name">What would you like to cook, {{ user.username }}?</label>
                         <div class="input-group">
                             <input id="item_name" name="item_name" type="text" class="form-control"/>
                             <div class="input-group-append">
