@@ -3,9 +3,13 @@ from django.shortcuts import render, reverse
 from .models import ListItem
 
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import permission_required
+
+iterr = ['the_list.view_listitem', 'the_list.add_listitem']
 
 
 # Create your views here.
+@permission_required(iterr)
 def index(request):
     the_list = ListItem.objects.all()
     return render(request, 'the_list/index.html', {'the_list': the_list})
