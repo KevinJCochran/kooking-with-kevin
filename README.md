@@ -9,7 +9,7 @@ python3 --version
 2. Clone the repo, create a virtual environment, install dependencies:
 ```shell script
 git clone git@github.com:KevinJCochran/kooking-with-kevin.git
-cd kooking_with_kevin
+cd kooking-with-kevin
 python -m venv .
 source bin/activate
 pip install -r requirements.txt
