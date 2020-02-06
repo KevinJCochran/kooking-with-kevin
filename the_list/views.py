@@ -1,4 +1,5 @@
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponse
+from django.template import loader, RequestContext
 from django.shortcuts import render, reverse
 from .models import ListItem
 
@@ -27,15 +28,15 @@ def start_session(request):
 
 
 # Render the add item page
+@permission_required('the_list.add_listitem')
 def add_item(request):
-    return render(request, 'the_list/add_item.html')
-
-
-def save_item(request):
-    try:
-        new_item_name = request.POST['item_name']
-    except KeyError:
-        print('BALLS!')
+    if request.method == 'GET':
+        return render(request, 'the_list/add_item.html')
     else:
-        ListItem(name=new_item_name).save()
-        return HttpResponseRedirect(reverse('the_list:index'))
+        try:
+            new_item_name = request.POST['item_name']
+        except KeyError:
+            print('BALLS!')
+        else:
+            ListItem(name=new_item_name).save()
+            return HttpResponseRedirect(reverse('the_list:index'))

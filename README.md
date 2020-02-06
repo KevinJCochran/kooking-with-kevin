@@ -1,5 +1,5 @@
 _The official website of:_
-###Kooking with Kevin
+### Kooking with Kevin
 
 Installation:
 1. Make sure you have python3 installed and optionally Docker for docker builds
@@ -10,7 +10,7 @@ python3 --version
 ```shell script
 git clone git@github.com:KevinJCochran/kooking-with-kevin.git
 cd kooking-with-kevin
-python -m venv .
+python3 -m venv .
 source bin/activate
 pip install -r requirements.txt
 ```
