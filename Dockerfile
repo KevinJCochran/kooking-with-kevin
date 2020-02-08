@@ -14,6 +14,7 @@ COPY kooking_with_kevin ./kooking_with_kevin
 COPY templates ./templates
 COPY static ./static
 COPY the_list ./the_list
+COPY blog ./blog
 
 RUN python manage.py migrate
 
