@@ -1,29 +1,49 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Welcome to Kooking with Kevin!</h1>
-      <p class="lead">A bunch of nerds haphazardly cooking delicious food.</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-10 border-right">
-        <div class="row">
-          <div class="col">
-            <p class="lead">Featured post</p>
-            <h3>The gang makes embarrasses the French</h3>
-            <p class="font-italic text-muted">We tried to make French onion soup but then everything went south</p>
-            <div class="d-flex justify-content-between">
-              <a href="#">&gt; Read article</a>
-              <p>By Camille Chow</p>
-            </div>
-          </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Welcome to Kooking with Kevin!</h1>
+            <p class="lead">A bunch of nerds haphazardly cooking delicious food.</p>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="container">
+        <div id="page-content" class="row">
+            <div id="post list" class="col-10 border-right">
+
+                <div id="featured-article" class="row mb-4">
+                    <div class="col">
+                        <p class="lead">Featured post</p>
+                        <h3>{{ featured_post.title }}</h3>
+                        <p class="font-italic text-muted">
+                            {{ featured_post.sub_title }}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a href="#">&gt; Read article</a>
+                            <p>By {{ featured_post.author }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% for post in blog_posts %}
+                    <div class="col-4">
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="{% static 'noodles.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text lead">{{ post.title }}</p>
+                                <p class="card-text text-muted font-italic">{{ post.sub_title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

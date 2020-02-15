@@ -8,10 +8,8 @@
 <link rel="stylesheet" href="{% static "signin.css" %}">
 {% endblock %}
 
-{#{% block navbar %}{% endblock %}#}
-
 {% block content %}
-    <div class="container text-center">
+    <div class="container-fluid text-center">
     <form class="form-signin" method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <img class="mb-4" src="{% static "android-chrome-192x192.png" %}" alt="" width="72" height="72">
